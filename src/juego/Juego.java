@@ -10,6 +10,7 @@ import graficos.Pantalla;
 import java.awt.BorderLayout;
 import java.awt.Canvas;
 import java.awt.Dimension;
+import java.awt.Graphics;
 import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
 import java.awt.image.DataBuffer;
@@ -26,8 +27,6 @@ import control.Teclado;
  * @author Joni
  */
 public class Juego extends Canvas implements Runnable {
-    
-    
     
     private static final String NOMBRE = "juego";
     
@@ -47,7 +46,7 @@ public class Juego extends Canvas implements Runnable {
     // imagen en blanco
     private static BufferedImage imagen = new BufferedImage(ANCHO, ALTO, BufferedImage.TYPE_INT_RGB);
     
-    private static int[] pixeles = ((DataBufferInt) imagen .getRaster().getDataBuffer()).getData();
+    private static int[] pixeles = ((DataBufferInt) imagen.getRaster().getDataBuffer()).getData();
     
     private static int x = 0;
     private static int y = 0;
@@ -98,16 +97,16 @@ public class Juego extends Canvas implements Runnable {
     	teclado.actualizar();
     	
     	if (teclado.arriba) {
-    		System.out.println("arriba");
+    		y++;
     	}
     	if (teclado.abajo) {
-    		System.out.println("abajo");
+    		y--;
     	}
     	if (teclado.izquierda) {
-    		System.out.println("izquierda");
+    		x++;
     	}
     	if (teclado.derecha) {
-    		System.out.println("derecha");
+    		x--;
     	}
         aps++;
     }
@@ -116,10 +115,24 @@ public class Juego extends Canvas implements Runnable {
     	BufferStrategy estrategia = getBufferStrategy();
     	
     	if (estrategia == null) {
+    		// carga tres buffer antes de mostrar
     		createBufferStrategy(3);
     		return;
     	}
+    	pantalla.limpiar();
+    	pantalla.mostrar(x,y);
     	
+//    	for (int i = 0; i < pixeles.length; i++) {
+//    		pixeles[i] = pantalla.pixeles[i];
+//    	}
+		System.arraycopy(pantalla.pixeles, 0, pixeles, 0, pixeles.length);
+    	
+    	Graphics g = estrategia.getDrawGraphics();
+    	
+    	g.drawImage(imagen, 0, 0, getWidth(), getHeight(), null);
+    	g.dispose();
+    	
+    	estrategia.show();
         fps++;
     }
     @Override
