@@ -5,9 +5,15 @@
  */
 package juego;
 
+import graficos.Pantalla;
+
 import java.awt.BorderLayout;
 import java.awt.Canvas;
 import java.awt.Dimension;
+import java.awt.image.BufferStrategy;
+import java.awt.image.BufferedImage;
+import java.awt.image.DataBuffer;
+import java.awt.image.DataBufferInt;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -21,7 +27,7 @@ import control.Teclado;
  */
 public class Juego extends Canvas implements Runnable {
     
-    private static JFrame ventana;
+    
     
     private static final String NOMBRE = "juego";
     
@@ -30,14 +36,26 @@ public class Juego extends Canvas implements Runnable {
     private static final int ALTO = 600;
     private static int aps = 0;
     private static int fps = 0;
-    private static Thread thread;
     
     private static volatile boolean enFuncionamiento = false;
     
+    private static Thread thread;
+    private static JFrame ventana;
     private static Teclado teclado;
+    private static Pantalla pantalla;
+    
+    // imagen en blanco
+    private static BufferedImage imagen = new BufferedImage(ANCHO, ALTO, BufferedImage.TYPE_INT_RGB);
+    
+    private static int[] pixeles = ((DataBufferInt) imagen .getRaster().getDataBuffer()).getData();
+    
+    private static int x = 0;
+    private static int y = 0;
     
     public Juego() {
         setPreferredSize(new Dimension(ANCHO, ALTO));
+        
+        pantalla = new Pantalla(ANCHO, ALTO);
         
         teclado = new Teclado();
         addKeyListener(teclado);
@@ -95,6 +113,13 @@ public class Juego extends Canvas implements Runnable {
     }
     
     private void mostrar() {
+    	BufferStrategy estrategia = getBufferStrategy();
+    	
+    	if (estrategia == null) {
+    		createBufferStrategy(3);
+    		return;
+    	}
+    	
         fps++;
     }
     @Override

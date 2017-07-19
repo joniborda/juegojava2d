@@ -45,6 +45,7 @@ public class Pantalla {
                     continue;
                 }
                 
+                // si sobre pasa el LADO_SPRITE - 1 (31) vuelve a ser 0
                 pixeles[posicionX + posicionY * ancho] = Sprite.asfalto.pixeles[(x & MASCARA_SPRITE) + (y & MASCARA_SPRITE) * LADO_SPRITE];
             }
         }
