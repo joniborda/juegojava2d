@@ -8,6 +8,9 @@ public class Sprite {
 	public int[] pixeles;
 	private final HojaSprites hoja;
 	
+        // coleccion de sprites
+        public static Sprite asfalto = new Sprite(32, 0, 0, HojaSprites.desierto);
+        
 	public Sprite(int lado, final int columna, final int fila, final HojaSprites hoja) {
 		this.lado = lado;
 		this.pixeles = new int[lado * lado];
