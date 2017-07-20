@@ -1,5 +1,6 @@
 package mapa;
 
+import mapa.cuadro.Cuadro;
 import graficos.Pantalla;
 
 public abstract class Mapa {
@@ -35,11 +36,18 @@ public abstract class Mapa {
 	
 	// temporal
 	public void mostrar(final int compensacionX, final int compensacionY, final Pantalla pantalla) {
-		int o = compensacionX >> 5, // /32
+		int o = compensacionX >> 5, // /32 corre el bit cinco lugares a la derecha
 			e = (compensacionX + pantalla.obtenAncho()) >> 5,
 			n = compensacionY >> 5,
 			s = (compensacionY + pantalla.obtenAlto()) >> 5;
-		
-		
+	}
+	
+	public Cuadro obtenCuadro(final int x, final int y) {
+		switch (cuadros[x + y * ancho]) {
+			case 0:
+				return Cuadro.ASFALTO;
+			default:
+				return null;
+		}
 	}
 }
