@@ -1,7 +1,7 @@
 package graficos;
 
 public class Sprite {
-	private final int lado;
+	public final int LADO;
 	private int x;
 	private int y;
 
@@ -9,11 +9,11 @@ public class Sprite {
 	private final HojaSprites hoja;
 
 	// coleccion de sprites
-	public static Sprite asfalto = new Sprite(32, 0, 0, HojaSprites.desierto);
+	public static final Sprite ASFALTO = new Sprite(32, 0, 0, HojaSprites.desierto);
 
 	public Sprite(int lado, final int columna, final int fila,
 			final HojaSprites hoja) {
-		this.lado = lado;
+		this.LADO = lado;
 		this.pixeles = new int[lado * lado];
 		this.x = columna * lado;
 		this.y = fila * lado;

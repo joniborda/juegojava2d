@@ -3,7 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Joni/Documents/NetBeansProjects/ZombieLand-master/ZombieLand-master/Juego/src/juego/Juego.java</file>
+            <file>file:/C:/Users/Joni/Documents/NetBeansProjects/Juego/src/juego/Juego.java</file>
+            <file>file:/C:/Users/Joni/Documents/NetBeansProjects/Juego/src/graficos/HojaSprites.java</file>
+            <file>file:/C:/Users/Joni/Documents/NetBeansProjects/Juego/src/graficos/Pantalla.java</file>
+            <file>file:/C:/Users/Joni/Documents/NetBeansProjects/Juego/src/graficos/Sprite.java</file>
         </group>
     </open-files>
 </project-private>
