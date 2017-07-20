@@ -39,11 +39,12 @@ public abstract class Mapa {
 			final Pantalla pantalla) {
 
 		pantalla.setDiferencia(compensacionX, compensacionY);
-		
-		int o = compensacionX >> 5, // /32 corre el bit cinco lugares a la
+
+		int o = compensacionX >> 5; // /32 corre el bit cinco lugares a la
 									// derecha
-		e = (compensacionX + pantalla.obtenAncho()) >> 5, n = compensacionY >> 5, s = (compensacionY + pantalla
-				.obtenAlto()) >> 5;
+		int e = (compensacionX + pantalla.obtenAncho() + Cuadro.LADO) >> 5;
+		int n = compensacionY >> 5;
+		int s = (compensacionY + pantalla.obtenAlto() + Cuadro.LADO) >> 5;
 
 		for (int y = n; y < s; y++) {
 			for (int x = o; x < e; x++) {
@@ -53,6 +54,9 @@ public abstract class Mapa {
 	}
 
 	public Cuadro obtenCuadro(final int x, final int y) {
+		if (x < 0 || y < 0 || x >= ancho || y >= alto) {
+			return Cuadro.VACIO;
+		}
 		switch (cuadros[x + y * ancho]) {
 		case 0:
 			return Cuadro.ASFALTO;

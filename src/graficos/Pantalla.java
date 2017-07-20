@@ -32,27 +32,6 @@ public class Pantalla {
 			pixeles[i] = 0;
 		}
 	}
-	
-	// temporal
-//	public void mostrar(final int compensacionX, final int compensacionY) {
-//		for (int y = 0; y < alto; y++) {
-//			int posicionY = y + compensacionY;
-//
-//			if (posicionY < 0 || posicionY >= alto) {
-//				continue;
-//			}
-//			for (int x = 0; x < ancho; x++) {
-//				int posicionX = x + compensacionX;
-//
-//				if (posicionX < 0 || posicionX >= ancho) {
-//					continue;
-//				}
-//				// si sobre pasa el LADO_SPRITE - 1 (31) vuelve a ser 0
-//				pixeles[posicionX + posicionY * ancho] = Sprite.ASFALTO.pixeles[(x & MASCARA_SPRITE)
-//						+ (y & MASCARA_SPRITE) * LADO_SPRITE];
-//			}
-//		}
-//	}
 
 	public void mostrarCuadro(int compensacionX, int compensacionY,
 			Cuadro cuadro) {
@@ -64,11 +43,14 @@ public class Pantalla {
 			int posicionY = y + compensacionY;
 			for (int x = 0; x < cuadro.sprite.LADO; x++) {
 				int posicionX = x + compensacionX;
-				if (posicionX < 0 || posicionX > ancho || posicionY < 0
-						|| posicionY > alto) {
+				if (posicionX < -cuadro.sprite.LADO || posicionX >= ancho || posicionY < 0
+						|| posicionY >= alto) {
 					break;
 				}
 
+				if (posicionX < 0) {
+					posicionX = 0;
+				}
 				pixeles[posicionX + posicionY * ancho] = cuadro.sprite.pixeles[x
 						+ y * cuadro.sprite.LADO];
 			}
