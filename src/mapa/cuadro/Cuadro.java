@@ -19,7 +19,7 @@ public abstract class Cuadro {
 	}
 	
 	public void mostrar(final int x, final int y, Pantalla pantalla) {
-		
+		pantalla.mostrarCuadro(x << 5, y << 5, this);
 	}
 	
 	public boolean solido() {

@@ -4,10 +4,10 @@ import java.util.Random;
 
 public class MapaGenerado extends Mapa {
 	
-	private final Random aleatorio = new Random();
+	private static final Random aleatorio = new Random();
 
-	public MapaGenerado(final int ancho, final int largo) {
-		super(ancho, largo);
+	public MapaGenerado(final int ancho, final int alto) {
+		super(ancho, alto);
 	}
 	
 	protected void generarMapa() {
