@@ -16,6 +16,8 @@ public abstract class Cuadro {
 	
 	public static final Cuadro ASFALTO = new CuadroAsfalto(Sprite.ASFALTO);
 	
+	public static final Cuadro DESIERTO = new CuadroAsfalto(Sprite.DESIERTO);
+
 	public Cuadro(final Sprite sprite) {
 		this.sprite = sprite;
 	}
