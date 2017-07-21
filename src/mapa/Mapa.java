@@ -9,6 +9,7 @@ public abstract class Mapa {
 	protected int alto;
 
 	protected int[] cuadros;
+	protected Cuadro[] cuadrosCatalogo;
 
 	public Mapa(final int ancho, final int alto) {
 		this.ancho = ancho;
@@ -26,7 +27,7 @@ public abstract class Mapa {
 
 	}
 
-	public void cargarMapa(final String ruta) {
+	protected void cargarMapa(final String ruta) {
 
 	}
 
@@ -61,7 +62,7 @@ public abstract class Mapa {
 		case 0:
 			return Cuadro.ASFALTO;
 		case 1:
-			return Cuadro.DESIERTO;
+			return Cuadro.ARENA;
 		default:
 			return Cuadro.VACIO;
 		}

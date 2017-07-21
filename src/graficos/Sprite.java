@@ -12,7 +12,7 @@ public class Sprite {
 	public static final Sprite ASFALTO = new Sprite(32, 0, 0,
 			HojaSprites.desierto);
 
-	public static final Sprite DESIERTO = new Sprite(32, 1, 0,
+	public static final Sprite ARENA = new Sprite(32, 1, 0,
 			HojaSprites.desierto);
 	
 	public static final Sprite VACIO = new Sprite(32, 0x000000);
