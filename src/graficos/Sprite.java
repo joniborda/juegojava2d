@@ -1,7 +1,7 @@
 package graficos;
 
 public class Sprite {
-	public final int LADO;
+	private final int LADO;
 	private int x;
 	private int y;
 
@@ -37,6 +37,10 @@ public class Sprite {
 		for (int i = 0; i < pixeles.length; i++) {
 			pixeles[i] = color;
 		}
+	}
+	
+	public int obtenLado() {
+		return LADO;
 	}
 
 }

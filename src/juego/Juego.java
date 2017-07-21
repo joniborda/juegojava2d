@@ -9,6 +9,7 @@ import graficos.Pantalla;
 
 import java.awt.BorderLayout;
 import java.awt.Canvas;
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.image.BufferStrategy;
@@ -33,6 +34,9 @@ public class Juego extends Canvas implements Runnable {
     private static final int ALTO = 600;
     private static int aps = 0;
     private static int fps = 0;
+    
+    private static String CONTADOR_APS = "";
+    private static String CONTADOR_FPS = "";
     
     private static volatile boolean enFuncionamiento = false;
     
@@ -63,6 +67,7 @@ public class Juego extends Canvas implements Runnable {
         ventana.setResizable(false);
         ventana.setLayout(new BorderLayout());
         ventana.add(this, BorderLayout.CENTER);
+        ventana.setUndecorated(true);
         ventana.pack();
         ventana.setLocationRelativeTo(null);
         ventana.setVisible(true);
@@ -107,6 +112,10 @@ public class Juego extends Canvas implements Runnable {
     	if (teclado.derecha) {
     		x++;
     	}
+    	
+    	if (teclado.salir) {
+    		System.exit(0);
+    	}
         aps++;
     }
     
@@ -122,24 +131,27 @@ public class Juego extends Canvas implements Runnable {
     	
     	mapa.mostrar(x, y, pantalla);
     	
-//    	for (int i = 0; i < pixeles.length; i++) {
-//    		pixeles[i] = pantalla.pixeles[i];
-//    	}
 		System.arraycopy(pantalla.pixeles, 0, pixeles, 0, pixeles.length);
     	
     	Graphics g = estrategia.getDrawGraphics();
     	
     	g.drawImage(imagen, 0, 0, getWidth(), getHeight(), null);
+    	g.setColor(Color.white);
+    	g.fillRect(ANCHO/2, ALTO/2, 32, 32);
+    	g.drawString(CONTADOR_APS, 10, 20);
+    	g.drawString(CONTADOR_FPS, 10, 35);
+    	
     	g.dispose();
     	
     	estrategia.show();
         fps++;
     }
+    
     @Override
     public void run() {
         final int NS_POR_SEGUNDO = 1000000000;
-        final byte APS_OBJETIVO = 60;
-        final double NS_POR_ACTUALIZACION = NS_POR_SEGUNDO / APS_OBJETIVO;
+        //final byte APS_OBJETIVO = 64;
+        final double NS_POR_ACTUALIZACION = NS_POR_SEGUNDO >> 6;
         long referenciaActualizacion  = System.nanoTime();
         long referenciaContador = System.nanoTime();
         double tiempoTranscurrido;
@@ -149,8 +161,10 @@ public class Juego extends Canvas implements Runnable {
         
         while(enFuncionamiento) {
             final long inicioBucle = System.nanoTime();
+            
             tiempoTranscurrido = inicioBucle - referenciaActualizacion;
             referenciaActualizacion = inicioBucle;
+            
             delta += tiempoTranscurrido / NS_POR_ACTUALIZACION;
             
             while(delta >= 1) {
@@ -161,7 +175,8 @@ public class Juego extends Canvas implements Runnable {
             mostrar();
             
             if (System.nanoTime() - referenciaContador > NS_POR_SEGUNDO) {
-                ventana.setTitle(NOMBRE + " || APS: " + aps + " || FPS: " + fps );
+                CONTADOR_APS = "APS: " + aps;
+                CONTADOR_FPS = "FPS: " + fps;
                 aps = 0;
                 fps = 0;
                 referenciaContador = System.nanoTime();

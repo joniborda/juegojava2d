@@ -13,11 +13,14 @@ public class Teclado implements KeyListener {
 	public boolean derecha;
 	public boolean izquierda;
 	
+	public boolean salir;
+	
 	public void actualizar() {
 		arriba = teclas[KeyEvent.VK_W];
 		abajo = teclas[KeyEvent.VK_S];
 		derecha = teclas[KeyEvent.VK_D];
 		izquierda = teclas[KeyEvent.VK_A];
+		salir = teclas[KeyEvent.VK_ESCAPE];
 	}
 	
 	@Override

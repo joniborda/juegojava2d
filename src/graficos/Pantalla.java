@@ -39,11 +39,11 @@ public class Pantalla {
 		compensacionX -= diferenciaX;
 		compensacionY -= diferenciaY;
 		
-		for (int y = 0; y < cuadro.sprite.LADO; y++) {
+		for (int y = 0; y < cuadro.sprite.obtenLado(); y++) {
 			int posicionY = y + compensacionY;
-			for (int x = 0; x < cuadro.sprite.LADO; x++) {
+			for (int x = 0; x < cuadro.sprite.obtenLado(); x++) {
 				int posicionX = x + compensacionX;
-				if (posicionX < -cuadro.sprite.LADO || posicionX >= ancho || posicionY < 0
+				if (posicionX < -cuadro.sprite.obtenLado() || posicionX >= ancho || posicionY < 0
 						|| posicionY >= alto) {
 					break;
 				}
@@ -52,7 +52,7 @@ public class Pantalla {
 					posicionX = 0;
 				}
 				pixeles[posicionX + posicionY * ancho] = cuadro.sprite.pixeles[x
-						+ y * cuadro.sprite.LADO];
+						+ y * cuadro.sprite.obtenLado()];
 			}
 		}
 	}
