@@ -16,6 +16,7 @@ public class Cuadro {
 	public static final Cuadro ASFALTO = new Cuadro(Sprite.ASFALTO);
 	public static final Cuadro ARENA = new Cuadro(Sprite.ARENA);
 	public static final Cuadro BORDE_CARRETERA = new Cuadro(Sprite.BORDE_CARRETERA);
+	public static final Cuadro BORDE_CARRETERA_ABAJO = new Cuadro(Sprite.BORDE_CARRETERA_ABAJO);
 	public static final Cuadro CENTRO_CARRETERA = new Cuadro(Sprite.CENTRO_CARRETERA);
 	public static final Cuadro ESQUINA_CARRETERA = new Cuadro(Sprite.ESQUINA_CARRETERA);
 	public static final Cuadro PARED_PIEDRA = new Cuadro(Sprite.PARED_PIEDRA);

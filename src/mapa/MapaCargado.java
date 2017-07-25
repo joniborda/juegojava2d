@@ -44,6 +44,12 @@ public class MapaCargado extends Mapa {
 			case 0xfffecc34:
 				cuadrosCatalogo[i] = Cuadro.BORDE_CARRETERA;
 				continue;
+			case 0xffc3a014:
+				cuadrosCatalogo[i] = Cuadro.BORDE_CARRETERA_ABAJO;
+				continue;
+			case 0xff555249:
+				cuadrosCatalogo[i] = Cuadro.BORDE_CARRETERA_ABAJO;
+				continue;
 			case 0xffd1d1d1:
 				cuadrosCatalogo[i] = Cuadro.CENTRO_CARRETERA;
 				continue;
