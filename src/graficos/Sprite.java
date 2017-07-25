@@ -21,6 +21,7 @@ public class Sprite {
 	public static final Sprite PUERTA_SUPERIOR_IZQUIERDA = new Sprite(32, 7, 0, 0, HojaSprites.desierto);
 	public static final Sprite PUERTA_SUPERIOR_DERECHA = new Sprite(32, 7, 0, 1, HojaSprites.desierto);
 	public static final Sprite PUERTA_INTERMEDIA_IZQUIERDA = new Sprite(32, 7, 1, 0, HojaSprites.desierto);
+	public static final Sprite PUERTA_INTERMEDIA_DERECHA = new Sprite(32, 7, 1, 1, HojaSprites.desierto);
 	public static final Sprite PUERTA_INFERIOR = new Sprite(32, 8, 1, 0, HojaSprites.desierto);
 	public static final Sprite OXIDO = new Sprite(32, 9, 0, 0, HojaSprites.desierto);
 	public static final Sprite PUERTA_SUPERIOR_CENTRAL = new Sprite(32, 8, 0, 0, HojaSprites.desierto);
@@ -134,18 +135,42 @@ public class Sprite {
 	}
 
 	private void rotar90I(int[] pixelesTemporales) {
-
+		int i = 0;
+		for (int x = lado - 1; x > -1; x--) {
+			for (int y = 0; y < lado; y++) {
+				pixeles[i] = pixelesTemporales[x + y * lado];
+				i++;
+			}
+		}
 	}
 
 	private void rotar90D(int[] pixelesTemporales) {
-
+		int i = 0;
+		for (int x = 0; x < lado; x++) {
+			for (int y = lado - 1; y > -1; y--) {
+				pixeles[i] = pixelesTemporales[x + y * lado];
+				i++;
+			}
+		}
 	}
 
 	private void rotar90IYInvertido(int[] pixelesTemporales) {
-
+		int i = 0;
+		for (int x = 0; x < lado; x++) {
+			for (int y = 0; y < lado; y++) {
+				pixeles[i] = pixelesTemporales[x + y * lado];
+				i++;
+			}
+		}
 	}
 
 	private void rotar90DYInvertido(int[] pixelesTemporales) {
-
+		int i = 0;
+		for (int x = lado - 1; x > -1; x--) {
+			for (int y = lado - 1; y > -1; y--) {
+				pixeles[i] = pixelesTemporales[x + y * lado];
+				i++;
+			}
+		}
 	}
 }

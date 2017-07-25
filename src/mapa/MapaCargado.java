@@ -17,8 +17,7 @@ public class MapaCargado extends Mapa {
 
 	protected void cargarMapa(String ruta) {
 		try {
-			BufferedImage imagen = ImageIO.read(MapaCargado.class
-					.getResource(ruta));
+			BufferedImage imagen = ImageIO.read(MapaCargado.class.getResource(ruta));
 
 			ancho = imagen.getWidth();
 			alto = imagen.getHeight();
@@ -69,11 +68,17 @@ public class MapaCargado extends Mapa {
 			case 0xffb38364:
 				cuadrosCatalogo[i] = Cuadro.PUERTA_INTERMEDIA_IZQUIERDA;
 				continue;
+			case 0xff920e0e:
+				cuadrosCatalogo[i] = Cuadro.PUERTA_INTERMEDIA_DERECHA;
+				continue;
 			case 0xff98281a:
 				cuadrosCatalogo[i] = Cuadro.PUERTA_SUPERIOR_CENTRAL;
 				continue;
 			case 0xffa14c41:
 				cuadrosCatalogo[i] = Cuadro.PUERTA_SUPERIOR_IZQUIERDA;
+				continue;
+			case 0xffce3434:
+				cuadrosCatalogo[i] = Cuadro.PUERTA_SUPERIOR_DERECHA;
 				continue;
 			default:
 				cuadrosCatalogo[i] = Cuadro.VACIO;
