@@ -19,6 +19,7 @@ import java.awt.image.DataBufferInt;
 import javax.swing.JFrame;
 
 import mapa.Mapa;
+import mapa.MapaCargado;
 import mapa.MapaGenerado;
 import control.Teclado;
 
@@ -57,7 +58,8 @@ public class Juego extends Canvas implements Runnable {
         setPreferredSize(new Dimension(ANCHO, ALTO));
         
         pantalla = new Pantalla(ANCHO, ALTO);
-        mapa = new MapaGenerado(ANCHO, ALTO);
+        //mapa = new MapaGenerado(ANCHO, ALTO);
+        mapa = new MapaCargado("/mapas/mapa_desierto.png");
         
         teclado = new Teclado();
         addKeyListener(teclado);
