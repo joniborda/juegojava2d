@@ -28,8 +28,8 @@ public class Sprite {
 			HojaSprites.desierto);
 	public static final Sprite PUERTA_SUPERIOR_IZQUIERDA = new Sprite(32, 7, 0,
 			HojaSprites.desierto);
-	public static final Sprite PUERTA_INTERMEDIA_IZQUIERDA = new Sprite(32, 7, 1,
-			HojaSprites.desierto);
+	public static final Sprite PUERTA_INTERMEDIA_IZQUIERDA = new Sprite(32, 7,
+			1, HojaSprites.desierto);
 	public static final Sprite PUERTA_INFERIOR = new Sprite(32, 8, 1,
 			HojaSprites.desierto);
 	public static final Sprite OXIDO = new Sprite(32, 9, 0,
@@ -52,16 +52,16 @@ public class Sprite {
 			}
 		}
 	}
-	
+
 	public Sprite(final int lado, final int color) {
 		this.LADO = lado;
-		pixeles = new int[lado*lado];
-		
+		pixeles = new int[lado * lado];
+
 		for (int i = 0; i < pixeles.length; i++) {
 			pixeles[i] = color;
 		}
 	}
-	
+
 	public int obtenLado() {
 		return LADO;
 	}

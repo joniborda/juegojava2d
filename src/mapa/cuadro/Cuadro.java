@@ -26,8 +26,7 @@ public class Cuadro {
 	public static final Cuadro PUERTA_INFERIOR = new Cuadro(Sprite.PUERTA_INFERIOR);
 	public static final Cuadro OXIDO = new Cuadro(Sprite.OXIDO);
 	public static final Cuadro PUERTA_SUPERIOR_CENTRAL = new Cuadro(Sprite.PUERTA_SUPERIOR_CENTRAL);
-	
-	
+
 	public Cuadro(final Sprite sprite) {
 		this.sprite = sprite;
 	}
