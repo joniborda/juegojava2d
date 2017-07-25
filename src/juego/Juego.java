@@ -129,7 +129,7 @@ public class Juego extends Canvas implements Runnable {
     		createBufferStrategy(3);
     		return;
     	}
-    	pantalla.limpiar();
+    	//pantalla.limpiar();
     	
     	mapa.mostrar(x, y, pantalla);
     	
