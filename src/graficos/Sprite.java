@@ -13,12 +13,19 @@ public class Sprite {
 	public static final Sprite ASFALTO = new Sprite(32, 0, 0, 0, HojaSprites.desierto);
 	public static final Sprite ARENA = new Sprite(32, 1, 0, 0, HojaSprites.desierto);
 	public static final Sprite BORDE_CARRETERA = new Sprite(32, 2, 0, 0, HojaSprites.desierto);
-	public static final Sprite BORDE_CARRETERA_ABAJO = new Sprite(32, 2, 0, 5, HojaSprites.desierto);
-	public static final Sprite CENTRO_CARRETERA = new Sprite(32, 3, 0, 0, HojaSprites.desierto);
-	public static final Sprite ESQUINA_CARRETERA = new Sprite(32, 4, 0, 0, HojaSprites.desierto);
+	public static final Sprite BORDE_CARRETERA_DERECHA = new Sprite(32, 2, 0, 3, HojaSprites.desierto);
+	public static final Sprite BORDE_CARRETERA_ABAJO = new Sprite(32, 2, 0, 4, HojaSprites.desierto);
+	public static final Sprite BORDE_CARRETERA_ARRIBA = new Sprite(32, 2, 0, 5, HojaSprites.desierto);
+	public static final Sprite CENTRO_CARRETERA_H = new Sprite(32, 3, 0, 4, HojaSprites.desierto);
+	public static final Sprite CENTRO_CARRETERA_V = new Sprite(32, 3, 0, 0, HojaSprites.desierto);
+	public static final Sprite ESQUINA_CARRETERA_NO = new Sprite(32, 4, 0, 2, HojaSprites.desierto);
+	public static final Sprite ESQUINA_CARRETERA_NE = new Sprite(32, 4, 0, 6, HojaSprites.desierto);
+	public static final Sprite ESQUINA_CARRETERA_SE = new Sprite(32, 4, 0, 1, HojaSprites.desierto);
+	public static final Sprite ESQUINA_CARRETERA_SO = new Sprite(32, 4, 0, 0, HojaSprites.desierto);
 	public static final Sprite PARED_PIEDRA = new Sprite(32, 5, 0, 0, HojaSprites.desierto);
 	public static final Sprite PARED_PIEDRA_INFERIOR = new Sprite(32, 6, 0, 0, HojaSprites.desierto);
-	public static final Sprite PARED_PIEDRA_CARRETERA = new Sprite(32, 0, 3, 0, HojaSprites.desierto);
+	public static final Sprite PARED_PIEDRA_CARRETERA_IZQUIERDA = new Sprite(32, 0, 3, 0, HojaSprites.desierto);
+	public static final Sprite PARED_PIEDRA_CARRETERA_DERECHA = new Sprite(32, 0, 3, 1, HojaSprites.desierto);
 	public static final Sprite PUERTA_SUPERIOR_IZQUIERDA = new Sprite(32, 7, 0, 0, HojaSprites.desierto);
 	public static final Sprite PUERTA_SUPERIOR_DERECHA = new Sprite(32, 7, 0, 1, HojaSprites.desierto);
 	public static final Sprite PUERTA_INTERMEDIA_IZQUIERDA = new Sprite(32, 7, 1, 0, HojaSprites.desierto);
@@ -70,29 +77,29 @@ public class Sprite {
 		int[] pixelesTemporales = iniciarPixelesTemporales();
 
 		switch (version) {
-		case 1:
-			invertirX(pixelesTemporales);
-			break;
-		case 2:
-			invertirY(pixelesTemporales);
-			break;
-		case 3:
-			invertirXY(pixelesTemporales);
-			break;
-		case 4:
-			rotar90I(pixelesTemporales);
-			break;
-		case 5:
-			rotar90D(pixelesTemporales);
-			break;
-		case 6:
-			rotar90IYInvertido(pixelesTemporales);
-			break;
-		case 7:
-			rotar90DYInvertido(pixelesTemporales);
-			break;
-		default:
-			cargaNormal();
+			case 1 :
+				invertirX(pixelesTemporales);
+				break;
+			case 2 :
+				invertirY(pixelesTemporales);
+				break;
+			case 3 :
+				invertirXY(pixelesTemporales);
+				break;
+			case 4 :
+				rotar90I(pixelesTemporales);
+				break;
+			case 5 :
+				rotar90D(pixelesTemporales);
+				break;
+			case 6 :
+				rotar90IYInvertido(pixelesTemporales);
+				break;
+			case 7 :
+				rotar90DYInvertido(pixelesTemporales);
+				break;
+			default :
+				cargaNormal();
 		}
 
 	}
