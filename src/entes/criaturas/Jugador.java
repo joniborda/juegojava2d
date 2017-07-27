@@ -25,26 +25,35 @@ public class Jugador extends Criatura {
 	public void actualizar() {
 		int desplazamientoX = 0;
 		int desplazamientoY = 0;
+
+		int velocidadMovimiento = 1;
+
 		if (animacion < 32767) {
 			animacion++;
 		} else {
 			animacion = 0;
 		}
 
+		if (teclado.correr) {
+			velocidadMovimiento = 3;
+		} else {
+			velocidadMovimiento = 1;
+		}
+
 		if (teclado.arriba) {
-			desplazamientoY--;
+			desplazamientoY -= velocidadMovimiento;
 		}
 
 		if (teclado.abajo) {
-			desplazamientoY++;
+			desplazamientoY += velocidadMovimiento;
 		}
 
 		if (teclado.izquierda) {
-			desplazamientoX--;
+			desplazamientoX -= velocidadMovimiento;
 		}
 
 		if (teclado.derecha) {
-			desplazamientoX++;
+			desplazamientoX += velocidadMovimiento;
 		}
 
 		if (desplazamientoX != 0 || desplazamientoY != 0) {
@@ -54,10 +63,12 @@ public class Jugador extends Criatura {
 			enMovimiento = false;
 		}
 
+		int resto = animacion % 40;
+
 		if (direccion == 'n') {
 			this.sprite = Sprite.ARRIBA0;
 			if (enMovimiento) {
-				if (animacion % 30 > 15) {
+				if (resto > 15) {
 					sprite = Sprite.ARRIBA1;
 				} else {
 					sprite = Sprite.ARRIBA2;
@@ -68,7 +79,7 @@ public class Jugador extends Criatura {
 		if (direccion == 's') {
 			this.sprite = Sprite.ABAJO0;
 			if (enMovimiento) {
-				if (animacion % 30 > 15) {
+				if (resto > 15) {
 					sprite = Sprite.ABAJO1;
 				} else {
 					sprite = Sprite.ABAJO2;
@@ -79,10 +90,14 @@ public class Jugador extends Criatura {
 		if (direccion == 'o') {
 			this.sprite = Sprite.IZQUIERDA0;
 			if (enMovimiento) {
-				if (animacion % 30 > 15) {
-					sprite = Sprite.IZQUIERDA1;
+				if (resto > 10 && resto <= 20) {
+					sprite = Sprite.IZQUIERDA1; // izquierda
+				} else if (resto > 20 && resto <= 30) {
+					sprite = Sprite.IZQUIERDA0; // juntos
+				} else if (resto > 30) {
+					sprite = Sprite.IZQUIERDA2; // derecha
 				} else {
-					sprite = Sprite.IZQUIERDA2;
+					sprite = Sprite.IZQUIERDA0; // juntos
 				}
 			}
 		}
@@ -90,10 +105,14 @@ public class Jugador extends Criatura {
 		if (direccion == 'e') {
 			this.sprite = Sprite.DERECHA0;
 			if (enMovimiento) {
-				if (animacion % 30 > 15) {
-					sprite = Sprite.DERECHA1;
+				if (resto > 10 && resto <= 20) {
+					sprite = Sprite.DERECHA1; // izquierda
+				} else if (resto > 20 && resto <= 30) {
+					sprite = Sprite.DERECHA0; // juntos
+				} else if (resto > 30) {
+					sprite = Sprite.DERECHA2; // derecha
 				} else {
-					sprite = Sprite.DERECHA2;
+					sprite = Sprite.DERECHA0; // juntos
 				}
 			}
 		}
