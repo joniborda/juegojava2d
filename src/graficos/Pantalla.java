@@ -63,6 +63,7 @@ public class Pantalla {
 	public int obtenAncho() {
 		return this.ancho;
 	}
+
 	public int obtenAlto() {
 		return this.alto;
 	}
@@ -83,8 +84,12 @@ public class Pantalla {
 				if (posicionX < 0) {
 					posicionX = 0;
 				}
-				pixeles[posicionX + posicionY * ancho] = jugador.getSprite().pixeles[x + y
-						* jugador.getSprite().obtenLado()];
+
+				// 0x00ff00 es el color de fondo
+				if (jugador.getSprite().pixeles[x + y * jugador.getSprite().obtenLado()] != 0xff00ff00) {
+					pixeles[posicionX + posicionY * ancho] = jugador.getSprite().pixeles[x + y
+							* jugador.getSprite().obtenLado()];
+				}
 			}
 		}
 	}
