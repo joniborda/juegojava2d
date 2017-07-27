@@ -34,6 +34,10 @@ public class Sprite {
 	public static final Sprite OXIDO = new Sprite(32, 9, 0, 0, HojaSprites.desierto);
 	public static final Sprite PUERTA_SUPERIOR_CENTRAL = new Sprite(32, 8, 0, 0, HojaSprites.desierto);
 
+	// coleccion de sprite del personaje
+	public static final Sprite ABAJO0 = new Sprite(32, 0, 0, 0, HojaSprites.jugador);
+	public static final Sprite ABAJO1 = new Sprite(32, 1, 0, 0, HojaSprites.jugador);
+
 	public Sprite(final int lado, final int columna, final int fila, final int version, final HojaSprites hoja) {
 		this.lado = lado;
 		this.pixeles = new int[lado * lado];

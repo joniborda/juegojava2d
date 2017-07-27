@@ -23,6 +23,7 @@ public class HojaSprites {
 
 	// coleccion de hoja de sprites
 	public static HojaSprites desierto = new HojaSprites("/texturas/desierto.png", 320, 320);
+	public static HojaSprites jugador = new HojaSprites("/texturas/desierto.png", 320, 320);
 
 	public HojaSprites(final String ruta, final int ancho, final int alto) {
 		this.ancho = ancho;

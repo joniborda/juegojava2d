@@ -7,6 +7,7 @@ package juego;
 
 import entes.criaturas.Jugador;
 import graficos.Pantalla;
+import graficos.Sprite;
 
 import java.awt.BorderLayout;
 import java.awt.Canvas;
@@ -62,7 +63,7 @@ public class Juego extends Canvas implements Runnable {
 		teclado = new Teclado();
 		addKeyListener(teclado);
 
-		jugador = new Jugador(teclado);
+		jugador = new Jugador(teclado, 225, 255, Sprite.ABAJO0);
 		ventana = new JFrame(NOMBRE);
 		ventana.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		ventana.setResizable(false);
@@ -124,15 +125,16 @@ public class Juego extends Canvas implements Runnable {
 		}
 		// pantalla.limpiar();
 
-		mapa.mostrar(jugador.getX(), jugador.getY(), pantalla);
+		mapa.mostrar(jugador.getX() - pantalla.obtenAncho() / 2 + jugador.getSprite().obtenLado() / 2, jugador.getY()
+				- pantalla.obtenAlto() / 2 + jugador.getSprite().obtenLado() / 2, pantalla);
+		jugador.mostrar(pantalla);
 
 		System.arraycopy(pantalla.pixeles, 0, pixeles, 0, pixeles.length);
 
 		Graphics g = estrategia.getDrawGraphics();
 
 		g.drawImage(imagen, 0, 0, getWidth(), getHeight(), null);
-		g.setColor(Color.white);
-		g.fillRect(ANCHO / 2, ALTO / 2, 32, 32);
+		g.setColor(Color.red);
 		g.drawString(CONTADOR_APS, 10, 20);
 		g.drawString(CONTADOR_FPS, 10, 35);
 		g.drawString("x:" + jugador.getX(), 10, 50);
