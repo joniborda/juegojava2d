@@ -1,7 +1,7 @@
 package mapa;
 
-import mapa.cuadro.Cuadro;
 import graficos.Pantalla;
+import mapa.cuadro.Cuadro;
 
 public abstract class Mapa {
 
@@ -37,8 +37,7 @@ public abstract class Mapa {
 	}
 
 	// temporal
-	public void mostrar(final int compensacionX, final int compensacionY,
-			final Pantalla pantalla) {
+	public void mostrar(final int compensacionX, final int compensacionY, final Pantalla pantalla) {
 
 		pantalla.setDiferencia(compensacionX, compensacionY);
 
@@ -65,12 +64,23 @@ public abstract class Mapa {
 			return Cuadro.VACIO;
 		}
 		switch (cuadros[x + y * ancho]) {
-		case 0:
-			return Cuadro.ASFALTO;
-		case 1:
-			return Cuadro.ARENA;
-		default:
-			return Cuadro.VACIO;
+			case 0 :
+				return Cuadro.ASFALTO;
+			case 1 :
+				return Cuadro.ARENA;
+			default :
+				return Cuadro.VACIO;
 		}
+	}
+
+	public Cuadro getCuadroCatalogo(int posicion) {
+		if (posicion >= 0 && posicion < cuadrosCatalogo.length) {
+			return cuadrosCatalogo[posicion];
+		}
+		System.out.println("nulllll");
+		return Cuadro.VACIO;
+	}
+	public int getAncho() {
+		return ancho;
 	}
 }

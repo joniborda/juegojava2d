@@ -63,7 +63,7 @@ public class Juego extends Canvas implements Runnable {
 		teclado = new Teclado();
 		addKeyListener(teclado);
 
-		jugador = new Jugador(teclado, 225, 255, Sprite.ABAJO0);
+		jugador = new Jugador(mapa, teclado, 225, 255, Sprite.ABAJO0);
 		ventana = new JFrame(NOMBRE);
 		ventana.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		ventana.setResizable(false);
