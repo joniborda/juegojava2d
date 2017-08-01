@@ -32,8 +32,8 @@ public class Juego extends Canvas implements Runnable {
 
 	private static final String NOMBRE = "juego";
 
-	private static final int ANCHO = 800;
-	private static final int ALTO = 600;
+	private static final int ANCHO = 400;
+	private static final int ALTO = 200;
 	private static int aps = 0;
 	private static int fps = 0;
 

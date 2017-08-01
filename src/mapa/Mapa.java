@@ -64,22 +64,25 @@ public abstract class Mapa {
 			return Cuadro.VACIO;
 		}
 		switch (cuadros[x + y * ancho]) {
-			case 0 :
-				return Cuadro.ASFALTO;
-			case 1 :
-				return Cuadro.ARENA;
-			default :
-				return Cuadro.VACIO;
+		case 0:
+			return Cuadro.ASFALTO;
+		case 1:
+			return Cuadro.ARENA;
+		default:
+			return Cuadro.VACIO;
 		}
 	}
 
 	public Cuadro getCuadroCatalogo(int posicion) {
+		System.out.println(posicion);
 		if (posicion >= 0 && posicion < cuadrosCatalogo.length) {
+			System.out.println("consigue");
 			return cuadrosCatalogo[posicion];
 		}
 		System.out.println("nulllll");
 		return Cuadro.VACIO;
 	}
+
 	public int getAncho() {
 		return ancho;
 	}
