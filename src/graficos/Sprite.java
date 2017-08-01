@@ -35,21 +35,23 @@ public class Sprite {
 	public static final Sprite PUERTA_SUPERIOR_CENTRAL = new Sprite(32, 8, 0, 0, HojaSprites.desierto);
 
 	// coleccion de sprite del personaje
-	public static final Sprite ABAJO0 = new Sprite(32, 0, 0, 0, HojaSprites.jugador);
-	public static final Sprite ABAJO1 = new Sprite(32, 1, 0, 0, HojaSprites.jugador);
-	public static final Sprite ABAJO2 = new Sprite(32, 2, 0, 0, HojaSprites.jugador);
+	public static final Sprite ABAJO0 = new Sprite(32, 3, 3, 0, HojaSprites.jugador);
+	public static final Sprite ABAJO1 = new Sprite(32, 4, 3, 0, HojaSprites.jugador);
+	public static final Sprite ABAJO2 = new Sprite(32, 3, 3, 0, HojaSprites.jugador);
 
-	public static final Sprite ARRIBA0 = new Sprite(32, 0, 1, 0, HojaSprites.jugador);
-	public static final Sprite ARRIBA1 = new Sprite(32, 1, 1, 0, HojaSprites.jugador);
-	public static final Sprite ARRIBA2 = new Sprite(32, 2, 1, 0, HojaSprites.jugador);
+	public static final Sprite ARRIBA0 = new Sprite(32, 7, 2, 0, HojaSprites.jugador);
+	public static final Sprite ARRIBA1 = new Sprite(32, 8, 2, 0, HojaSprites.jugador);
+	public static final Sprite ARRIBA2 = new Sprite(32, 9, 2, 0, HojaSprites.jugador);
 
-	public static final Sprite IZQUIERDA0 = new Sprite(32, 0, 2, 0, HojaSprites.jugador);
-	public static final Sprite IZQUIERDA1 = new Sprite(32, 1, 2, 0, HojaSprites.jugador);
-	public static final Sprite IZQUIERDA2 = new Sprite(32, 2, 2, 0, HojaSprites.jugador);
+	public static final Sprite IZQUIERDA0 = new Sprite(32, 3, 2, 1, HojaSprites.jugador);
+	public static final Sprite IZQUIERDA1 = new Sprite(32, 4, 2, 1, HojaSprites.jugador);
+	public static final Sprite IZQUIERDA2 = new Sprite(32, 5, 2, 1, HojaSprites.jugador);
+	public static final Sprite IZQUIERDA3 = new Sprite(32, 6, 2, 1, HojaSprites.jugador);
 
-	public static final Sprite DERECHA0 = new Sprite(32, 0, 3, 0, HojaSprites.jugador);
-	public static final Sprite DERECHA1 = new Sprite(32, 1, 3, 0, HojaSprites.jugador);
-	public static final Sprite DERECHA2 = new Sprite(32, 2, 3, 0, HojaSprites.jugador);
+	public static final Sprite DERECHA0 = new Sprite(32, 3, 2, 0, HojaSprites.jugador);
+	public static final Sprite DERECHA1 = new Sprite(32, 4, 2, 0, HojaSprites.jugador);
+	public static final Sprite DERECHA2 = new Sprite(32, 5, 2, 0, HojaSprites.jugador);
+	public static final Sprite DERECHA3 = new Sprite(32, 6, 2, 0, HojaSprites.jugador);
 
 	public Sprite(final int lado, final int columna, final int fila, final int version, final HojaSprites hoja) {
 		this.lado = lado;
@@ -94,29 +96,29 @@ public class Sprite {
 		int[] pixelesTemporales = iniciarPixelesTemporales();
 
 		switch (version) {
-		case 1:
-			invertirX(pixelesTemporales);
-			break;
-		case 2:
-			invertirY(pixelesTemporales);
-			break;
-		case 3:
-			invertirXY(pixelesTemporales);
-			break;
-		case 4:
-			rotar90I(pixelesTemporales);
-			break;
-		case 5:
-			rotar90D(pixelesTemporales);
-			break;
-		case 6:
-			rotar90IYInvertido(pixelesTemporales);
-			break;
-		case 7:
-			rotar90DYInvertido(pixelesTemporales);
-			break;
-		default:
-			cargaNormal();
+			case 1 :
+				invertirX(pixelesTemporales);
+				break;
+			case 2 :
+				invertirY(pixelesTemporales);
+				break;
+			case 3 :
+				invertirXY(pixelesTemporales);
+				break;
+			case 4 :
+				rotar90I(pixelesTemporales);
+				break;
+			case 5 :
+				rotar90D(pixelesTemporales);
+				break;
+			case 6 :
+				rotar90IYInvertido(pixelesTemporales);
+				break;
+			case 7 :
+				rotar90DYInvertido(pixelesTemporales);
+				break;
+			default :
+				cargaNormal();
 		}
 
 	}

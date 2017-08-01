@@ -29,6 +29,8 @@ public class Jugador extends Criatura {
 		int desplazamientoY = 0;
 
 		int velocidadMovimiento = 1;
+		int tiempo_arriba = 0;
+		int tiempo_caminar = 0;
 
 		if (animacion < 32767) {
 			animacion++;
@@ -37,8 +39,12 @@ public class Jugador extends Criatura {
 		}
 
 		if (teclado.correr) {
+			tiempo_arriba = 20;
+			tiempo_caminar = 20;
 			velocidadMovimiento = 3;
 		} else {
+			tiempo_arriba = 30;
+			tiempo_caminar = 40;
 			velocidadMovimiento = 1;
 		}
 
@@ -65,12 +71,11 @@ public class Jugador extends Criatura {
 			enMovimiento = false;
 		}
 
-		int resto = animacion % 40;
-
+		int resto = animacion % tiempo_arriba;
 		if (direccion == 'n') {
 			this.sprite = Sprite.ARRIBA0;
 			if (enMovimiento) {
-				if (resto > 15) {
+				if (resto > tiempo_arriba / 2) {
 					sprite = Sprite.ARRIBA1;
 				} else {
 					sprite = Sprite.ARRIBA2;
@@ -81,7 +86,7 @@ public class Jugador extends Criatura {
 		if (direccion == 's') {
 			this.sprite = Sprite.ABAJO0;
 			if (enMovimiento) {
-				if (resto > 15) {
+				if (resto > tiempo_arriba / 2) {
 					sprite = Sprite.ABAJO1;
 				} else {
 					sprite = Sprite.ABAJO2;
@@ -89,17 +94,18 @@ public class Jugador extends Criatura {
 			}
 		}
 
+		resto = animacion % tiempo_caminar;
 		if (direccion == 'o') {
 			this.sprite = Sprite.IZQUIERDA0;
 			if (enMovimiento) {
-				if (resto > 10 && resto <= 20) {
+				if (resto > tiempo_caminar / 4 && resto <= tiempo_caminar / 2) {
 					sprite = Sprite.IZQUIERDA1; // izquierda
-				} else if (resto > 20 && resto <= 30) {
-					sprite = Sprite.IZQUIERDA0; // juntos
-				} else if (resto > 30) {
-					sprite = Sprite.IZQUIERDA2; // derecha
+				} else if (resto > tiempo_caminar / 2 && resto <= tiempo_caminar / 4 * 3) {
+					sprite = Sprite.IZQUIERDA2; // juntos
+				} else if (resto > tiempo_caminar / 4 * 3) {
+					sprite = Sprite.IZQUIERDA1; // derecha
 				} else {
-					sprite = Sprite.IZQUIERDA0; // juntos
+					sprite = Sprite.IZQUIERDA3; // juntos
 				}
 			}
 		}
@@ -107,14 +113,14 @@ public class Jugador extends Criatura {
 		if (direccion == 'e') {
 			this.sprite = Sprite.DERECHA0;
 			if (enMovimiento) {
-				if (resto > 10 && resto <= 20) {
-					sprite = Sprite.DERECHA1; // izquierda
-				} else if (resto > 20 && resto <= 30) {
-					sprite = Sprite.DERECHA0; // juntos
-				} else if (resto > 30) {
-					sprite = Sprite.DERECHA2; // derecha
+				if (resto > tiempo_caminar / 4 && resto <= tiempo_caminar / 2) {
+					sprite = Sprite.DERECHA1; // juntos
+				} else if (resto > tiempo_caminar / 2 && resto <= tiempo_caminar / 4 * 3) {
+					sprite = Sprite.DERECHA2; // adelante
+				} else if (resto > tiempo_caminar / 4 * 3) {
+					sprite = Sprite.DERECHA1; // atras
 				} else {
-					sprite = Sprite.DERECHA0; // juntos
+					sprite = Sprite.DERECHA3; // juntos
 				}
 			}
 		}
